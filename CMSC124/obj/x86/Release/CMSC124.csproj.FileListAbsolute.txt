@@ -1,0 +1,3 @@
+C:\Users\Gio\Desktop\CMSC124  Current\CMSC124\bin\Release\CMSC124.exe
+C:\Users\Gio\Desktop\CMSC124  Current\CMSC124\obj\x86\Release\CMSC124.csprojResolveAssemblyReference.cache
+C:\Users\Gio\Desktop\CMSC124  Current\CMSC124\obj\x86\Release\CMSC124.exe

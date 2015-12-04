@@ -1,0 +1,18 @@
+/home/gio/Desktop/CMSC124/CMSC124/obj/x86/Release/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/home/gio/Desktop/CMSC124/CMSC124/obj/x86/Release/CMSC124.gtk-gui.gui.stetic
+/home/gio/Desktop/CMSC124/CMSC124/bin/Release/CMSC124.exe.mdb
+/home/gio/Desktop/CMSC124/CMSC124/bin/Release/CMSC124.exe
+/home/gio/Desktop/CMSC124/CMSC124/obj/x86/Release/CMSC124.exe
+/home/gio/Desktop/CMSC124/CMSC124/obj/x86/Release/CMSC124.exe.mdb
+/home/gio/Desktop/CMSC124  CURRENT/CMSC124/obj/x86/Release/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/home/gio/Desktop/CMSC124  CURRENT/CMSC124/obj/x86/Release/CMSC124.gtk-gui.gui.stetic
+/home/gio/Desktop/CMSC124  CURRENT/CMSC124/bin/Release/CMSC124.exe.mdb
+/home/gio/Desktop/CMSC124  CURRENT/CMSC124/bin/Release/CMSC124.exe
+/home/gio/Desktop/CMSC124  CURRENT/CMSC124/obj/x86/Release/CMSC124.exe
+/home/gio/Desktop/CMSC124  CURRENT/CMSC124/obj/x86/Release/CMSC124.exe.mdb
+/home/gio/Desktop/back-up/CMSC124  CURRENT (2)/CMSC124/obj/x86/Release/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/home/gio/Desktop/back-up/CMSC124  CURRENT (2)/CMSC124/obj/x86/Release/CMSC124.gtk-gui.gui.stetic
+/home/gio/Desktop/back-up/CMSC124  CURRENT (2)/CMSC124/bin/Release/CMSC124.exe.mdb
+/home/gio/Desktop/back-up/CMSC124  CURRENT (2)/CMSC124/bin/Release/CMSC124.exe
+/home/gio/Desktop/back-up/CMSC124  CURRENT (2)/CMSC124/obj/x86/Release/CMSC124.exe
+/home/gio/Desktop/back-up/CMSC124  CURRENT (2)/CMSC124/obj/x86/Release/CMSC124.exe.mdb

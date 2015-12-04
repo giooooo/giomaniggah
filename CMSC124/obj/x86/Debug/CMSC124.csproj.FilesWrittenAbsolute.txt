@@ -1,0 +1,6 @@
+/home/gio/Desktop/CMSC124/CMSC124/obj/x86/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/home/gio/Desktop/CMSC124/CMSC124/obj/x86/Debug/CMSC124.gtk-gui.gui.stetic
+/home/gio/Desktop/CMSC124/CMSC124/bin/Debug/CMSC124.exe.mdb
+/home/gio/Desktop/CMSC124/CMSC124/bin/Debug/CMSC124.exe
+/home/gio/Desktop/CMSC124/CMSC124/obj/x86/Debug/CMSC124.exe
+/home/gio/Desktop/CMSC124/CMSC124/obj/x86/Debug/CMSC124.exe.mdb
