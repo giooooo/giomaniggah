@@ -50,12 +50,41 @@ public partial class MainWindow: Gtk.Window
 	}
 	protected void regexInit(){
 		regexList = new List<Regex> ();	
-		regexList.Add (new Regex (@"^(HAI)(\sBTW\s+)?"));
-		regexList.Add (new Regex (@"^(I)\s+(HAS)\s+(A)\s+"+ varName + @"(\sITZ\s.+)?" + @"(\sBTW\s+.*)?"));
-		regexList.Add (new Regex (@"^(VISIBLE)\s+(\sBTW\s+)?"));
-		regexList.Add (new Regex (@"^(GIMMEH)\s+(\sBTW\s+)?"));
+		regexList.Add (new Regex (@"^\s*(HAI)(\sBTW\s+)?"));
+		regexList.Add (new Regex (@"^\s*(I)\s+(HAS)\s+(A)\s+"+ varName + @"(\sITZ\s(A)?.+)?" + @"(\sBTW\s+.*)?"));
+		regexList.Add (new Regex (@"^\s*(VISIBLE)\s+(\sBTW\s+)?"));
 		regexList.Add (new Regex (@"^\s*" + varName + @"\s+(R)\s+.+"));
-		regexList.Add (new Regex (@"^(KTHXBYE)(\sBTW\s+)?"));
+		regexList.Add (new Regex (@"^\s*(KTHXBYE)(\sBTW\s+)?"));
+
+		//regexList.Add (new Regex(@"^(VISIBLE)\s\""?.*\""?(\sBTW\s+)?"));
+		regexList.Add (new Regex(@"^\s*(BOTH SAEM).*(AN).*(\s+BTW\s+)?"));
+		regexList.Add (new Regex(@"^\s*(DIFFRINT).*(AN).*(\s+BTW\s+)?"));
+		regexList.Add (new Regex(@"^\s*(BIGGR OF).*(AN).*(\sBTW\s+)?"));
+		regexList.Add (new Regex(@"^\s*(SMALLR OF).*(AN).*(\s+BTW\s+)?"));
+		regexList.Add (new Regex(@"^\s*(SUM OF).*(AN).*(\s+BTW\s+)?"));
+		regexList.Add (new Regex(@"^\s*(DIFF OF).*(AN).*(\s+BTW\s+)?"));
+		regexList.Add (new Regex(@"^\s*(PRODUKT OF).*(AN).*(\s+BTW\s+)?"));
+		regexList.Add (new Regex(@"^\s*(QUOSHUNT OF).*(AN).*(\s+BTW\s+)?"));
+		regexList.Add (new Regex(@"^\s*(MOD OF).*(AN).*(\s+BTW\s+)?"));
+		regexList.Add (new Regex(@"^\s*(BOTH OF).*(AN).*(\s+BTW\s+)?"));
+		regexList.Add (new Regex(@"^\s*(EITHER OF).*(AN).*(\s+BTW\s+)?"));
+		regexList.Add (new Regex(@"^\s*(WON OF).*(AN).*(\s+BTW\s+)?"));
+		regexList.Add (new Regex(@"^\s*(ALL OF)\s.+(\s(AN)\s.+)+(\s+BTW\s+)?"));
+		regexList.Add (new Regex(@"^\s*(ANY OF)\s.+(\s(AN)\s.+)+(\s+BTW\s+)?"));
+		regexList.Add (new Regex(@"^\s*(NOT)\s.*(\s+BTW\s+)?"));
+		regexList.Add (new Regex(@"^\s*(YA RLY)(\s+BTW\s+)?"));
+		regexList.Add (new Regex(@"^\s*(NO WAI)(\s+BTW\s+)?"));
+		regexList.Add (new Regex(@"^\s*(OIC)(\s+BTW\s+)?"));
+		regexList.Add (new Regex(@"^\s*(WTF\?)(\s+BTW\s+)?"));
+		regexList.Add (new Regex(@"\s*(OMG)\s*.*(\s+BTW\s+)?"));
+		regexList.Add (new Regex(@"\s*(OMGWTF)(\s+BTW\s+)?"));
+		regexList.Add (new Regex(@"^\s*(GTFO)(\s+BTW\s+)?"));
+//		regexList.Add (new Regex(@"(BTW)"));
+		regexList.Add (new Regex(@"^\s*(OBTW).*(\s+BTW\s+)?"));
+		regexList.Add (new Regex(@"^\s*(TLDR)(\s+BTW\s+)?"));
+		regexList.Add (new Regex(@"^\s*(SMOOSH)(\s+BTW\s+)?"));
+		regexList.Add (new Regex(@"^\s*(MKAY)(\s+BTW\s+)?"));
+		regexList.Add (new Regex(@"^\s*(GIMMEH)\s.*(\s+BTW\s+)?"));
 
 		literalsList.Add (integerLiteral);
 		literalsList.Add (floatLiteral);
@@ -108,6 +137,7 @@ public partial class MainWindow: Gtk.Window
 		{	
 			if (c == ' ' && !stringLiteral) {
 				// RESERVED WORDS
+				token = token.Trim();
 				if (token == "HAI") {
 					if (!haiFlag) {
 						lexemeList.Add (new Lexeme (token, "Program Start"));
@@ -116,16 +146,16 @@ public partial class MainWindow: Gtk.Window
 						token = "";
 					} else {
 						console.Buffer.Text += "Error on Line " + linecounter + " : HAI again\n";  
-					}X
-				} else if (token == "I" || token == "I HAS")
+					}
+				} 
+				if(!haiFlag){
+						console.Buffer.Text += "Error on Line " + linecounter + " : HAI plsss.\n";
+						break;
+				}
+				else if (token == "I" || token == "I HAS" || token == "YA" || token == "NO" || token == "SUM" || token == "DIFF" || token == "PRODUKT" || token == "QUOSHUNT" || token == "MOD" || token == "BOTH" || token == "EITHER" || token == "BIGGR" || token == "SMALLR" || token == "WON" || token == "ALL" || token == "ANY")
 					token += c;
 				else if (token == "I HAS A") {
 					lexemeList.Add (new Lexeme (token, "Variable Declaration"));
-					prevToken = token;
-					token = "";
-				}
-				else if (token == "VISIBLE") {
-					lexemeList.Add (new Lexeme (token, "Output"));
 					prevToken = token;
 					token = "";
 				}
@@ -134,8 +164,154 @@ public partial class MainWindow: Gtk.Window
 					prevToken = token;
 					token = "";
 				}
+				else if (token == "A" && prevToken == "ITZ") {
+					lexemeList.Add (new Lexeme (token, "Variable Data Type Initializer"));
+					prevToken = token;
+					token = "";
+				}
 				else if (token == "ITZ") {
 					lexemeList.Add (new Lexeme (token, "Variable Initializer"));
+					prevToken = token;
+					token = "";
+				}
+				else if (token == "BTW") {
+					lexemeList.Add (new Lexeme (token, "Comment"));
+					prevToken = token;
+					token = "";
+				}
+				else if (token == "VISIBLE") {
+					lexemeList.Add (new Lexeme (token, "Output"));
+
+					prevToken = token;
+					token = "";
+				}
+				else if (token == "GIMMEH") {
+					lexemeList.Add (new Lexeme (token, "Input"));
+
+					prevToken = token;
+					token = "";
+				}
+				else if (token == "YA RLY") {
+					lexemeList.Add (new Lexeme (token, "If"));
+
+					prevToken = token;
+					token = "";
+				}
+				else if (token == "NO WAI") {
+					lexemeList.Add (new Lexeme (token, "Else"));
+
+					prevToken = token;
+					token = "";
+				}
+				else if (token == "WTF?") {
+					lexemeList.Add (new Lexeme (token, "Switch"));
+					prevToken = token;
+					token = "";
+				}
+				else if (token == "OMG") {
+					lexemeList.Add (new Lexeme (token, "Case"));
+					prevToken = token;
+					token = "";
+				}
+				else if (token == "OMGWTF") {
+					lexemeList.Add (new Lexeme (token, "Default"));
+
+					prevToken = token;
+					token = "";
+				}
+				else if (token == "GTFO") {
+					lexemeList.Add (new Lexeme (token, "Break"));
+
+					prevToken = token;
+					token = "";
+				}
+				else if (token == "SUM OF") {
+					lexemeList.Add (new Lexeme (token, "Add"));
+
+					prevToken = token;
+					token = "";
+				}
+				else if (token == "DIFF OF") {
+					lexemeList.Add (new Lexeme (token, "Subtract"));
+
+					prevToken = token;
+					token = "";
+				}
+				else if (token == "PRODUKT OF") {
+					lexemeList.Add (new Lexeme (token, "Multiply"));
+
+					prevToken = token;
+					token = "";
+				}
+				else if (token == "QUOSHUNT OF") {
+					lexemeList.Add (new Lexeme (token, "Divide"));
+
+					prevToken = token;
+					token = "";
+				}
+				else if (token == "MOD OF") {
+					lexemeList.Add (new Lexeme (token, "Modulo"));
+
+					prevToken = token;
+					token = "";
+				}
+				else if (token == "BOTH OF") {
+					lexemeList.Add (new Lexeme (token, "And"));
+
+					prevToken = token;
+					token = "";
+				}
+				else if (token == "BIGGR OF") {
+					lexemeList.Add (new Lexeme (token, "Greater-Than"));
+
+					prevToken = token;
+					token = "";
+				}
+				else if (token == "SMALLR OF") {
+					lexemeList.Add (new Lexeme (token, "Less-Than"));
+
+					prevToken = token;
+					token = "";
+				}
+				else if (token == "BOTH SAEM") {
+					lexemeList.Add (new Lexeme (token, "Equality"));
+
+					prevToken = token;
+					token = "";
+				}
+				else if (token == "DIFFRINT") {
+					lexemeList.Add (new Lexeme (token, "Unequality"));
+
+					prevToken = token;
+					token = "";
+				}
+				else if (token == "ALL OF") {
+					lexemeList.Add (new Lexeme (token, "Compound And"));
+
+					prevToken = token;
+					token = "";
+				}
+				else if (token == "ANY OF") {
+					lexemeList.Add (new Lexeme (token, "Compound Or"));
+
+					prevToken = token;
+					token = "";
+				}
+				else if (token == "EITHER OF") {
+					lexemeList.Add (new Lexeme (token, "Or"));
+
+					prevToken = token;
+					token = "";
+				}
+				else if (token == "WON OF") {
+					lexemeList.Add (new Lexeme (token, "Xor"));
+
+					prevToken = token;
+					token = "";
+				}
+				else if (token == "SMOOSH") {
+					lexemeList.Add (new Lexeme (token, "Concatinate"));
+
 					prevToken = token;
 					token = "";
 				}
@@ -170,16 +346,7 @@ public partial class MainWindow: Gtk.Window
 										v.variableType = valType;
 									}	
 								}
-							}
-							else if(prevToken == "VISIBLE")
-							{
-								if (valType == "YARN") {
-									string[] temp = token.Split ('\"');
-									console.Buffer.Text += temp [1] + "\n";
-								} else {
-									console.Buffer.Text += token + "\n";
-								}	
-							}	
+							} 
 							lexemeList.Add((new Lexeme(token, valType)));
 							prevToken = token;
 							token = "";
@@ -212,49 +379,12 @@ public partial class MainWindow: Gtk.Window
 									assignee.variableValue = assigner.variableValue;
 									assignee.variableType = assigner.variableType;
 								}	
-							}
+							}	
 						}
-						else if(prevToken == "VISIBLE")
+						else if(prevToken == "BTW")
 						{
-							Boolean isDeclared = false;
-							foreach(Variable v in variableList)
-							{
-								if (v.variableName == token) 
-								{
-									if (v.variableType == "YARN") {
-										string[] temp = v.variableValue.Split ('\"');
-										console.Buffer.Text += temp [1] + "\n";										
-									} 
-									else if (v.variableType == "Untyped variable") {
-										console.Buffer.Text += "\n";										
-									} 
-									else {
-										console.Buffer.Text += v.variableValue + "\n";
-									}
-									isDeclared = true;
-									break;
-								}	
-							}
-							if(!isDeclared)
-								console.Buffer.Text += "Error on Line " + linecounter + " : " + token + " not declared.\n"; 
-						}
-						else if(prevToken == "GIMMEH")
-						{
-							Boolean isDeclared = false;
-							foreach(Variable v in variableList)
-							{
-								if (v.variableName == token) 
-								{
-									gimmeh box = new gimmeh ();
-									box.Run ();
-									v.variableValue = "\"" + box.input + "\"";
-									v.variableType = "YARN";
-									isDeclared = true;
-									break;
-								}	
-							}
-							if(!isDeclared)
-								console.Buffer.Text += "Error on Line " + linecounter + " : " + token + " not declared.\n"; 
+							Console.Write(true);
+							continue;
 						}
 						lexemeList.Add (new Lexeme(token, "Variable Identifier"));
 						prevToken = token;
@@ -287,7 +417,7 @@ public partial class MainWindow: Gtk.Window
 		else if (Regex.IsMatch (token, booleanLiteral))
 			return "TROOF";
 		else
-			return "Untyped variable";
+			return "Untyped";
 	}
 	protected void filterInit(){
 		filter = new FileFilter (); 

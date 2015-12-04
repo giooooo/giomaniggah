@@ -4,29 +4,18 @@
 public partial class MainWindow
 {
 	private global::Gtk.Fixed execute;
-	
 	private global::Gtk.Label label1;
-	
 	private global::Gtk.FileChooserButton filechooserbutton;
-	
 	private global::Gtk.ScrolledWindow inputScrolledWindow;
-	
 	private global::Gtk.TextView input;
-	
 	private global::Gtk.ScrolledWindow statemenScrolledWindows;
-	
 	private global::Gtk.TreeView statements;
-	
 	private global::Gtk.ScrolledWindow variablesScrolledWindows;
-	
 	private global::Gtk.TreeView variables;
-	
 	private global::Gtk.Button exec;
-	
 	private global::Gtk.ScrolledWindow consoleScrolledWindow;
-	
 	private global::Gtk.TextView console;
-
+	
 	protected virtual void Build ()
 	{
 		global::Stetic.Gui.Initialize (this);
@@ -35,7 +24,7 @@ public partial class MainWindow
 		this.HeightRequest = 640;
 		this.Name = "MainWindow";
 		this.Title = global::Mono.Unix.Catalog.GetString ("MainWindow");
-		this.WindowPosition = ((global::Gtk.WindowPosition)(3));
+		this.WindowPosition = ((global::Gtk.WindowPosition)(4));
 		this.Resizable = false;
 		this.AllowGrow = false;
 		this.DefaultWidth = 800;

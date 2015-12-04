@@ -63,8 +63,6 @@
     <Compile Include="MainWindow.cs" />
     <Compile Include="Variable.cs" />
     <Compile Include="Lexeme.cs" />
-    <Compile Include="gimmeh.cs" />
-    <Compile Include="gtk-gui\CMSC124.gimmeh.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

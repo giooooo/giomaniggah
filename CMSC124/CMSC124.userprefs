@@ -3,11 +3,14 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="MainWindow.cs">
     <Files>
       <File FileName="Program.cs" Line="1" Column="1" />
-      <File FileName="MainWindow.cs" Line="462" Column="55" />
+      <File FileName="MainWindow.cs" Line="171" Column="32" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/home/xyrus/Desktop/CMSC124  Current/CMSC124/MainWindow.cs" line="25" />
+      <Breakpoint file="/home/xyrus/Desktop/CMSC124  Current/CMSC124/MainWindow.cs" line="23" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>
